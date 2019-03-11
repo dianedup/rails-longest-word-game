@@ -1,4 +1,13 @@
-<h1>Games#score</h1>
+<h1>Result</h1>
+<h2>Games#score</h2>
 <p>Find me in app/views/games/score.html.erb</p>
-
+<%if @game_output == "not_in_grid" %>
+<p>Sorry but <strong><%= @attempt.upcase %></strong> can't be built out of <%= @letters.join(', ') %> </p>
+<%end %>
+<%if @game_output == "not_english" %>
+<p>Sorry but <strong><%= @attempt.upcase %></strong> doesn't seem to be an english word </p>
+<%end %>
+<%if @game_output == "congratulations" %>
+<p><strong>CONGRATULATIONS!</strong> <%= @attempt.upcase %> is valid!</p>
+<%end %>
 <p><%= link_to 'Play again', 'new' %></p>
