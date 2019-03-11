@@ -7,5 +7,6 @@ class GamesController < ApplicationController
   end
 
   def score
+    # raise => to check if the form is being correctly set
   end
 end
