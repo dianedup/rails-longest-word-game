@@ -10,4 +10,6 @@
 <%if @game_output == "congratulations" %>
 <p><strong>CONGRATULATIONS!</strong> <%= @attempt.upcase %> is valid!</p>
 <%end %>
+
+<h3>Score: <%= @score %></h3>
 <p><%= link_to 'Play again', 'new' %></p>

@@ -13,12 +13,26 @@ class GamesController < ApplicationController
     @attempt = params[:player_suggestion]
     @letters = params[:letters].split(' ')
 
+    # Session is a big hash which already exists like params
+    # 1. Get the content of score
+    @score = session[:score]
+    # 2.a if the key 'score' doesn't exist in session, the score is initialized
+    # 2.b if the score is already present, it is increased
+    if @score.blank?
+      @score = @attempt.length**2
+    else
+      @score += @attempt.length**2
+    end
+    # 3. assign the new score value to the session
+    session[:score] = @score
+
     if !test_word_in_grid(@attempt, @letters)
        @game_output = "not_in_grid"
      elsif test_english_word(@attempt) == false
        @game_output = "not_english"
      else
       @game_output = "congratulations"
+
      end
   end
 
